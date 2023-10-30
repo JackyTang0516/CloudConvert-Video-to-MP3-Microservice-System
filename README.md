@@ -2,24 +2,26 @@
 
 How to run:
 
-To start RabbitMQ:
+
+
+1. To start RabbitMQ:
 minikube start
 minikube tunnel
 
-1: cd /path
-2: minikube start
-3: minikube tunnel
-4: create a jwt token:(the token does not contains %)
+2. create a jwt token:(the token does not contains %)
 curl -X POST http://mp3converter.com/login -u email:password(in the data base)
-5. refresh the gateway
+
+3. refresh the gateway
 cd gateway 
 kubectl delete  -f ./manifests
 kubectl apply -f ./manifests
 kubectl scale deployment --replicas=1 converter servicename
-6.send a email to notice the mp3 file was genetated 
+
+5. send a email to notice the mp3 file was genetated 
 curl -X POST -F 'file=@./test.mkv' -H 'Authorization: Bearer jwt_token’
 http://mp3converter.com/upload
-7.see email for the mp3 id:(pay attention to ’ character)
+
+7. see email for the mp3 id:(pay attention to ’ character)
 curl --output mp3_download.mp3 -X GET -H 'Authorization: Bearer jwttoken' "http://mp3converter.com/download?fid=file_id(get from email)"
 
 
