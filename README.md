@@ -75,7 +75,7 @@ mysql -uroot -p
 show databases;
 use auth
 select * from user;
-UPDATE user SET email = 'jackytang0516@gmail.com' WHERE id = 1;
+UPDATE user SET email = 'email' WHERE id = 1;
 
 
 
@@ -84,12 +84,5 @@ curl --output mp3_download.mp3 -X GET -H 'Authorization: Bearer jwt_token'
 "http://mp3converter.com/download?fid=651bb6f2d98f57da8c80c8c4"
 
 Use google 2-step authentication                                            
-
-Aws configuration
-#aws_access_key_id = 'AKIAYWWAGB4EMWB7MJ5E'
-# aws_secret_access_key = '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'
-
-aws s3 sync /Users/jackytang/Desktop/mp3_converter s3://k8s-mp3-converter
-aws s3 sync Folder_path s3://bucket_name
 
 
