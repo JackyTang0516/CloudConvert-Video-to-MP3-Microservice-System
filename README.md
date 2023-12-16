@@ -1,6 +1,6 @@
 # CloudConvert: Video-to-MP3 Microservice System
 
-How to run:
+## How to run:
 
 
 
@@ -25,7 +25,7 @@ http://mp3converter.com/upload
 curl --output mp3_download.mp3 -X GET -H 'Authorization: Bearer jwttoken' "http://mp3converter.com/download?fid=file_id(get from email)"
 
 
-To set environment path of RabbitMQ Manager:
+##  To set environment path of RabbitMQ Manager:
 On mac: sudo vim /etc/hosts
 127.0.0.1 mp3converter.com
 127.0.0.1 rabbitmq-manager.com
@@ -44,17 +44,17 @@ kubectl apply -f ./manifests
 kubectl logs -f name&id in k9s
 kubectl scale deployment --replicas=1 converter servicename
 
-To create a jwt token:(the token does not contains %)
+##  To create a jwt token:(the token does not contains %)
 curl -X POST http://mp3converter.com/login -u email:password(in the data base)
 
-To start upload the video:
+##  To start upload the video:
 curl -X POST -F 'file=@./videoname' -H 'Authorization: Bearer jwt token'
 http://mp3converter.com/upload
 
 You should reset the gateway service in k9s since the host of rabbitmq will not connect it well
 
 
-Find mp3id in mongodb:
+##  Find mp3id in mongodb:
 mongosh
 show databases;
 use mp3s
@@ -65,7 +65,7 @@ db.fs.files.find({"_id": ObjectId("651bb6f2d98f57da8c80c8c4")})
 To get mp3 file from mongodb to the local:
 converter % mongofiles --db=mp3s get_id --local=test.mp3 '{"$oid":"651bb6f2d98f57da8c80c8c4"}'
 
-Start mysql database:
+##  Start mysql database:
 sudo /usr/local/mysql/support-files/mysql.server start 
 mysql -uroot -p
 show databases;
@@ -75,7 +75,7 @@ UPDATE user SET email = 'email' WHERE id = 1;
 
 
 
-How to download form id:
+##  How to download form id:
 curl --output mp3_download.mp3 -X GET -H 'Authorization: Bearer jwt_token' 
 "http://mp3converter.com/download?fid=651bb6f2d98f57da8c80c8c4"
 
