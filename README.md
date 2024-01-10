@@ -9,7 +9,7 @@
 $ minikube start
 ```
 ```
-$minikube tunnel
+$ minikube tunnel
 ```
 - create a jwt token:(the token does not contains %)
 ```
